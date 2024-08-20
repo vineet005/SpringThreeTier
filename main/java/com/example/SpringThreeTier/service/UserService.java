@@ -8,16 +8,20 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService extends UserRepository{
+public class UserService{
     @Autowired
     private UserRepository userRepository;
 
-    public void addUsers(List<User> users){
-        userRepository.addUsers(users);
+    public List<User> getAllUsers(){
+        return userRepository.findAll();
     }
 
-    @Override
-    public void updateUser(List<User> users) {
-        userRepository.updateUser(users);
+    public List<User> getUsersByEmailDomain(String domain){
+        return userRepository.getUsersByEmailDomain(domain);
     }
+
+    public int countUsers(){
+        return (int)userRepository.count();
+    }
+
 }
