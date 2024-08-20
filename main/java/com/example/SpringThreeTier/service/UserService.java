@@ -5,27 +5,19 @@ import com.example.SpringThreeTier.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class UserService {
+public class UserService extends UserRepository{
     @Autowired
     private UserRepository userRepository;
 
-    public User adduser(User user){
-        return userRepository.save(user);
+    public void addUsers(List<User> users){
+        userRepository.addUsers(users);
     }
 
-    public User getUserById(int id){
-        return userRepository.findById(id).orElse(null);
+    @Override
+    public void updateUser(List<User> users) {
+        userRepository.updateUser(users);
     }
-
-    public User updateMail(int id, String email){
-        userRepository.findById(id).orElse(null).setEmail(email);
-        userRepository.save(userRepository.findById(id).orElse(null));
-        return userRepository.findById(id).orElse(null);
-    }
-
-    public void deleteUser(int id){
-        userRepository.deleteById(id);
-    }
-
 }

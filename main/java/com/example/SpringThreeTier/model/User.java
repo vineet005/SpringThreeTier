@@ -1,12 +1,10 @@
 package com.example.SpringThreeTier.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 
 @Entity
-@Table(name = "Day22")
+@Table(name = "users")
 public class User {
     @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)*/
