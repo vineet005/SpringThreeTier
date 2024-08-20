@@ -16,4 +16,21 @@ public class UserController {
     public User addUser(@RequestBody User user){
         return userService.adduser(user);
     }
+
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable int id){
+        return userService.getUserById(id);
+    }
+
+    @PutMapping("/update")
+    public User updateMail(@RequestBody User user){
+        return userService.updateMail(user.getId(), user.getEmail());
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteUser(@PathVariable int id){
+        userService.deleteUser(id);
+        System.out.println("User Deleted!");
+    }
+
 }
